@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use(session({
-  secret: "hangman-secret",
+  secret: process.env.SESSION_SECRET || "hangman-secret",
   resave: false,
   saveUninitialized: true
 }));
@@ -100,4 +100,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server started on port", PORT);
 });
+
 
