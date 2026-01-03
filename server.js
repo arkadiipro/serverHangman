@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || "hangman-secret",
+  secret: "hangman-secret",
   resave: false,
   saveUninitialized: true
 }));
@@ -98,7 +98,6 @@ app.post("/getword", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("Server started on port", PORT);
+  console.log("Server started on http://localhost:" + PORT);
 });
-
 
