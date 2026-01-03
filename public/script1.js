@@ -62,11 +62,11 @@ page.addEventListener("keydown", async (event) => {
     // 2. ПРИЙМАЄМО ТА РОЗПАКОВУЄМО ОБ'ЄКТ
     // Метод .json() перетворює текст від сервера назад у об'єкт JS
     const data = await response.json();
+    getChel(data.attempts)
     word.innerText = data.word;
-    if (data.clear) {
+    if (data.clear === true) {
       ctx.clearRect(0,0,canvas.width,canvas.height)
     }
-    getChel(data.attempts)
     if (data.alert === null) {
 
     } else {
@@ -75,7 +75,7 @@ page.addEventListener("keydown", async (event) => {
     // 3. Тепер ви можете звертатися до властивостей об'єкта
     console.log(data.word);     // Виведе: "S _ N"
     console.log(data.attempts); // Виведе: 5
-    console.log(data.message);  // Виведе: "Правильно!"
+    console.log(data.alert);  // Виведе: "Правильно!"
 
     // Приклад: вивести слово на екран
     document.getElementById("word1").innerText = data.word;
